@@ -59,19 +59,22 @@ function App() {
   }, [isLoading, isCompleted])
 
   return (
-    <Container maxW={1200} pt={8}>
+    <Container maxW={900} pt={8} borderRadius={10} bg="white" pb={8} px={8}>
       <Heading pb={8}>Coffee Quiz Demo</Heading>
       {!q && !isCompleted && !isLoading && !isSubmitted && (
-        <Text mb={4}>
-          Hello 👋 , this is a demo for how we can implement a quiz on your
-          website. Keep in mind this is a quick protoype just to show basic
-          functionality. The final implementation will have all the bells and
-          whistles. Please click the button below to begin the demo.
-        </Text>
+        <>
+          <Text mb={8}>
+            Hello 👋 , this is a demo for how we can implement a quiz on your
+            website. Keep in mind this is a quick protoype just to show basic
+            functionality. The final implementation will have all the bells and
+            whistles. Please click the button below to begin the demo.
+          </Text>
+          <Button onClick={() => setActiveQuestionIndex(0)}>Start Quiz</Button>
+        </>
       )}
       {isSubmitted && (
         <Flex direction="column">
-          <Text mb={4}>
+          <Text mb={8}>
             We have emailed your recommendations. Of course, this is a demo so
             email functionality has not been implemented yet 🙂
           </Text>
@@ -88,9 +91,6 @@ function App() {
           </Button>
         </Flex>
       )}
-      {!q && !isCompleted && !isSubmitted && (
-        <Button onClick={() => setActiveQuestionIndex(0)}>Start Quiz</Button>
-      )}
       {isCompleted && !isSubmitted && (
         <Flex
           as="form"
@@ -100,7 +100,7 @@ function App() {
             setIsLoading(true)
           }}
         >
-          <Text mb={4}>
+          <Text mb={8}>
             You have completed the quiz! Please provide your email address to
             receive a custom recommendation.
           </Text>
@@ -118,9 +118,9 @@ function App() {
         </Flex>
       )}
       {q && (
-        <Flex key={q.id} direction="column" pb={8}>
+        <Flex key={q.id} direction="column">
           <SlideFade in>
-            <Text size="xs" color="gray.500" mb={2}>
+            <Text size="xs" color="gray.500" mb={1}>
               {`${activeQuestionIndex + 1} of ${questions.length}`}
             </Text>
           </SlideFade>
