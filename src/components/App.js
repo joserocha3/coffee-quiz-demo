@@ -9,6 +9,7 @@ import {
   WrapItem,
   Input,
 } from '@chakra-ui/react'
+import { SlideFade } from '@chakra-ui/transition'
 
 const questions = [
   {
@@ -118,38 +119,42 @@ function App() {
       )}
       {q && (
         <Flex key={q.id} direction="column" pb={8}>
-          <Heading size="lg">{q.question}</Heading>
+          <SlideFade in>
+            <Heading size="lg">{q.question}</Heading>
+          </SlideFade>
           <Wrap mt={4} spacing={2}>
             {q.answers.map(a => (
-              <WrapItem key={a.id}>
-                <Flex
-                  px={6}
-                  py={8}
-                  border="1px solid #e9e9e9"
-                  borderRadius={3}
-                  cursor="pointer"
-                  direction="column"
-                  w={400}
-                  onClick={() => {
-                    const nextQuestion = questions[activeQuestionIndex + 1]
+              <SlideFade in>
+                <WrapItem key={a.id}>
+                  <Flex
+                    px={6}
+                    py={8}
+                    border="1px solid #e9e9e9"
+                    borderRadius={3}
+                    cursor="pointer"
+                    direction="column"
+                    w={400}
+                    onClick={() => {
+                      const nextQuestion = questions[activeQuestionIndex + 1]
 
-                    if (nextQuestion) {
-                      setActiveQuestionIndex(activeQuestionIndex + 1)
-                    } else {
-                      setActiveQuestionIndex(null)
-                      setIsCompleted(true)
-                    }
-                  }}
-                >
-                  <Text fontWeight="bold" fontSize="lg" mb={2}>
-                    {a.answer}
-                  </Text>
-                  <Text>
-                    A detailed description can appear here. We can place on icon
-                    on the left as well.
-                  </Text>
-                </Flex>
-              </WrapItem>
+                      if (nextQuestion) {
+                        setActiveQuestionIndex(activeQuestionIndex + 1)
+                      } else {
+                        setActiveQuestionIndex(null)
+                        setIsCompleted(true)
+                      }
+                    }}
+                  >
+                    <Text fontWeight="bold" fontSize="lg" mb={2}>
+                      {a.answer}
+                    </Text>
+                    <Text>
+                      A detailed description can appear here. We can place on
+                      icon on the left as well.
+                    </Text>
+                  </Flex>
+                </WrapItem>
+              </SlideFade>
             ))}
           </Wrap>
         </Flex>
