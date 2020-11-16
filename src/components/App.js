@@ -120,6 +120,11 @@ function App() {
       {q && (
         <Flex key={q.id} direction="column" pb={8}>
           <SlideFade in>
+            <Text size="xs" color="gray.500" mb={2}>
+              {`${activeQuestionIndex + 1} of ${questions.length}`}
+            </Text>
+          </SlideFade>
+          <SlideFade in>
             <Heading size="lg">{q.question}</Heading>
           </SlideFade>
           <Wrap mt={4} spacing={2}>
