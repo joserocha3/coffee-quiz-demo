@@ -7,7 +7,7 @@ import App from '../components/App'
 const IndexPage = () => {
   return (
     <ChakraProvider>
-      <Box bg="blue.100" h="100vh" py={8}>
+      <Box bg="blue.100" h="100vh" py={1}>
         <Helmet>
           <meta charSet="utf-8" />
           <title>Coffee Quiz Demo</title>
