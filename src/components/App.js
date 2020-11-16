@@ -59,7 +59,15 @@ function App() {
   }, [isLoading, isCompleted])
 
   return (
-    <Container maxW={900} pt={8} borderRadius={10} bg="white" pb={8} px={8}>
+    <Container
+      maxW={900}
+      pt={8}
+      borderRadius={10}
+      bg="white"
+      pb={8}
+      px={8}
+      boxShadow="sm"
+    >
       <Heading pb={8}>Coffee Quiz Demo</Heading>
       {!q && !isCompleted && !isLoading && !isSubmitted && (
         <>
